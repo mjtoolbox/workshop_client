@@ -1,0 +1,2 @@
+# Navigate to your JAVA_HOME/bin directory using command prompt and execute below
+wsimport -p com.workshop.client http://localhost:8080/workshop_ws/VariousService?wsdl -d c:/temp/workshop -Xnocompile -keep
