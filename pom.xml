@@ -72,6 +72,19 @@
             <version>1.5.3</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- JAX-RS 2.0 RESTful WebService based on RESTEasy -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.16.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.0.16.Final</version>
+        </dependency>
+
     </dependencies>
 
 
