@@ -91,6 +91,8 @@
     <build>
         <!-- final name will overwrite WAR file name-->
         <finalName>workshop_client</finalName>
+        <!-- if you want to dynamically build WAR based on environment, use below -->
+        <!--<finalName>${build.warname}</finalName>-->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -151,7 +153,7 @@
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
                     <server>tomcat7</server>
-                    <path>/workshop_client</path>
+                    <path>/${build.finalName}</path>
                     <username>admin</username>
                     <password>admin</password>
                 </configuration>
@@ -160,6 +162,36 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <build.warname>${project.artifactId}-${project.version}-DEV</build.warname>
+                <variousService.url>http://localhost:8080/workshop_ws/VariousService?wsdl</variousService.url>
+                <restService.url>http://localhost:8080/workshop_ws/rs/restservice</restService.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>ua</id>
+            <properties>
+                <build.warname>${project.artifactId}-${project.version}-UA</build.warname>
+                <variousService.url>uat url here</variousService.url>
+                <restService.url>uat url here</restService.url>
+
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <build.warname>${project.artifactId}-${project.version}-PROD</build.warname>
+                <variousService.url>production url here</variousService.url>
+                <restService.url>production url here</restService.url>
+            </properties>
+        </profile>
+    </profiles>
 
     <repositories>
         <repository>

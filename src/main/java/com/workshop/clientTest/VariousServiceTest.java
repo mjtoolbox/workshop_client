@@ -1,6 +1,7 @@
 package com.workshop.clientTest;
 
 import com.workshop.client.VariousServiceImpl;
+import com.workshop.utility.Utility;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,7 +14,7 @@ public class VariousServiceTest {
     public String callDisplayName() {
         VariousServiceImpl variousService = null;
         try {
-            variousService = new VariousServiceImpl(new URL("http://localhost:8080/workshop_ws/VariousService?wsdl"));
+            variousService = new VariousServiceImpl(new URL(Utility.loadProperties().getProperty("variousServiceURL")));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

@@ -1,5 +1,7 @@
 package com.workshop.restclient;
 
+import com.workshop.utility.Utility;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -11,7 +13,7 @@ import javax.ws.rs.core.Response;
  */
 public class RestServiceClient {
 
-    private String BASE_URL = "http://localhost:8080/workshop_ws/rs/restservice";
+    private String BASE_URL = Utility.loadProperties().getProperty("restServiceURL");
 
     public String getUserName(String aName) {
 
